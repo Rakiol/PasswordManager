@@ -4,11 +4,13 @@ import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
+    private static PasswordManager pm = new PasswordManager();
+
     public static void main(String[] args) {
-        PasswordManager pm = new PasswordManager();
 
         System.out.println("Welcome in your Password Manager");
         Scanner scanner =new Scanner(System.in);
+
 
 
         while (true) {
@@ -30,23 +32,38 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Not Implemented");
-                    showPassword();
+                    //showPassword();
                     break;
                 case 3:
                     System.out.println("Not Implemented");
-                    deletePassword();
+                    //deletePassword();
                     break;
                 case 4:
                     System.out.println("Not Implemented");
-                    showAllPasswords();
+                    //showAllPasswords();
                     break;
                 case 5:
                     System.out.println("Not Implemented");
-                    finish();
+                    //finish();
                     break;
                 default:
                     System.out.println("Upps Something went wrong");
             }
         }
+
+    }
+    private static void addPassword() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Website: ");
+        String website = scanner.next();
+
+        System.out.print("Benutzername: ");
+        String username = scanner.next();
+
+        System.out.print("Passwort: ");
+        String password = scanner.next();
+
+        pm.addPassword(website, username, password);
     }
 }
