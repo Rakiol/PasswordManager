@@ -24,23 +24,32 @@ public class Main {
 
             System.out.print("Your Choice: ");
             int choice = scanner.nextInt();
+            //scanner.close();
 
             switch (choice) {
                 case 1:
-                    System.out.println("Not Implemented");
-                    addPassword();
+                    System.out.print("Website: ");
+                    String website = scanner.next();
+
+                    System.out.print("Benutzername: ");
+                    String username = scanner.next();
+
+                    System.out.print("Passwort: ");
+                    String password = scanner.next();
+                    pm.addPassword(website,username,password);
                     break;
                 case 2:
                     System.out.println("Not Implemented");
                     //showPassword();
                     break;
                 case 3:
-                    System.out.println("Not Implemented");
-                    //deletePassword();
+                    pm.showAllPasswords();
+                    System.out.print("Choose Password index to Delete: ");
+                    int index = scanner.nextInt();
+                    pm.deletePassword(index);
                     break;
                 case 4:
-                    System.out.println("Not Implemented");
-                    //showAllPasswords();
+                    pm.showAllPasswords();
                     break;
                 case 5:
                     System.out.println("Not Implemented");
@@ -52,7 +61,22 @@ public class Main {
         }
 
     }
-    private static void addPassword() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**private static void addPassword() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Website: ");
@@ -65,5 +89,6 @@ public class Main {
         String password = scanner.next();
 
         pm.addPassword(website, username, password);
-    }
+    }**/
+
 }
