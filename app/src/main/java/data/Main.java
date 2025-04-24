@@ -1,15 +1,19 @@
 package data;
 
+import secure.SavePassword;
+
 import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
     private static PasswordManager pm = new PasswordManager();
+    private static SavePassword savePassword;
 
     public static void main(String[] args) {
 
         System.out.println("Welcome in your Password Manager");
         Scanner scanner =new Scanner(System.in);
+        savePassword = new SavePassword(pm);
 
 
 
@@ -20,7 +24,8 @@ public class Main {
             System.out.println("2: Show Password");
             System.out.println("3: Delete Password");
             System.out.println("4: Show AllPasswords");
-            System.out.println("5: Finish");
+            System.out.println("5: Masterpassword");
+            System.out.println("6: Finish");
 
             System.out.print("Your Choice: ");
             int choice = scanner.nextInt();
@@ -52,6 +57,11 @@ public class Main {
                     pm.showAllPasswords();
                     break;
                 case 5:
+                    System.out.print("Bitte Master-Passwort eingeben: ");
+                    String masterPassword = scanner.next();
+                    savePassword.saveToFile(masterPassword);
+                    break;
+                case 6:
                     System.out.println("Not Implemented");
                     //finish();
                     break;

@@ -32,6 +32,9 @@ public class PasswordManager {
             System.out.println("Gelöscht " + removed);
         }
     }
+    public List<PasswordEntry> getEntrys() {
+        return entrys;
+    }
 
 
 
