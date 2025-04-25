@@ -70,7 +70,10 @@ public class PasswordManager {
         } catch (Exception e) {
             System.out.println("Load mistake: " + e.getMessage());
         }
+    }
 
+    public List<PasswordEntry> getAllPasswords() {
+        return entrys;
     }
 }
 

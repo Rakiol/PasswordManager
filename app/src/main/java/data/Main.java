@@ -66,7 +66,7 @@ public class Main {
                     savePassword.saveToFile(masterPassword);
                     break;
                 case 6:
-                    System.out.print("Insert Masterpassword: ");
+                    System.out.print("Insert Masterpassword for Exit: ");
                     String masterPasswordFinish = scanner.next();
                     savePassword.saveToFile(masterPasswordFinish);
                     System.exit(0);
@@ -77,34 +77,4 @@ public class Main {
         }
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /**private static void addPassword() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Website: ");
-        String website = scanner.next();
-
-        System.out.print("Benutzername: ");
-        String username = scanner.next();
-
-        System.out.print("Passwort: ");
-        String password = scanner.next();
-
-        pm.addPassword(website, username, password);
-    }**/
-
 }
