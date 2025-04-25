@@ -13,6 +13,10 @@ public class Main {
 
         System.out.println("Welcome in your Password Manager");
         Scanner scanner =new Scanner(System.in);
+        System.out.print("Master-Passwort zum Entschlüsseln eingeben: ");
+        String pw = scanner.nextLine();
+        pm.loadFromFile(pw);
+
         savePassword = new SavePassword(pm);
 
 
@@ -23,8 +27,8 @@ public class Main {
             System.out.println("1: New Password");
             System.out.println("2: Show Password");
             System.out.println("3: Delete Password");
-            System.out.println("4: Show AllPasswords");
-            System.out.println("5: Masterpassword");
+            System.out.println("4: Show all Passwords");
+            System.out.println("5: Safe all Passwords");
             System.out.println("6: Finish");
 
             System.out.print("Your Choice: ");
@@ -57,13 +61,15 @@ public class Main {
                     pm.showAllPasswords();
                     break;
                 case 5:
-                    System.out.print("Bitte Master-Passwort eingeben: ");
+                    System.out.print("Insert Masterpassword: ");
                     String masterPassword = scanner.next();
                     savePassword.saveToFile(masterPassword);
                     break;
                 case 6:
-                    System.out.println("Not Implemented");
-                    //finish();
+                    System.out.print("Insert Masterpassword: ");
+                    String masterPasswordFinish = scanner.next();
+                    savePassword.saveToFile(masterPasswordFinish);
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Upps Something went wrong");
