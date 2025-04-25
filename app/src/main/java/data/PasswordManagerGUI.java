@@ -3,17 +3,11 @@ package data;
 import org.checkerframework.checker.units.qual.A;
 import secure.SavePassword;
 
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.List;
-import javax.swing.JTextArea;
-
 
 
 public class PasswordManagerGUI {
@@ -29,7 +23,11 @@ public class PasswordManagerGUI {
         frame.setTitle("Password Manager");
         frame.setSize(600,400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new FlowLayout());
+        frame.setLayout(new BorderLayout());
+
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new GridLayout(3, 2));
+
 
         JTextArea outputArea = new JTextArea(10, 40);
         outputArea.setEditable(false);
@@ -94,7 +92,7 @@ public class PasswordManagerGUI {
             }
         });
 
-        JButton deleteButton = new JButton("Delet Password");
+        JButton deleteButton = new JButton("Delete Password");
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -129,7 +127,7 @@ public class PasswordManagerGUI {
                 if (masterPassword != null && !masterPassword.isEmpty()) {
                     try {
                         savePassword.saveToFile(masterPassword);
-                        outputArea.append("Password saed successfully. \n");
+                        outputArea.append("Password saved successfully. \n");
                     } catch (Exception ex) {
                         outputArea.append("Error saving passwords: " + ex.getMessage() + "\n");
                         return;
@@ -137,34 +135,39 @@ public class PasswordManagerGUI {
 
                     System.exit(0);
                 } else {
-                    outputArea.append("Saved cancelled. No master password entered. \n");
+                    outputArea.append("Save cancelled. No master password entered. \n");
                 }
             }
         });
 
-        frame.add(websiteLabel);
-        frame.add(websiteField);
+        inputPanel.add(websiteLabel);
+        inputPanel.add(websiteField);
 
-        frame.add(usernameLabel);
-        frame.add(usernameField);
+        inputPanel.add(usernameLabel);
+        inputPanel.add(usernameField);
 
-        frame.add(passwordLabel);
-        frame.add(passwordField);
+        inputPanel.add(passwordLabel);
+        inputPanel.add(passwordField);
 
-        frame.add(addButton);
-        frame.add(showButton);
+        frame.add(inputPanel, BorderLayout.NORTH);
 
-        frame.add(deleteButton);
-        frame.add(saveButton);
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout());
 
-        frame.add(outputArea);
+        buttonPanel.add(addButton);
+        buttonPanel.add(showButton);
+        buttonPanel.add(deleteButton);
+        buttonPanel.add(saveButton);
+
+        frame.add(buttonPanel, BorderLayout.SOUTH);
+
+        JScrollPane scrollPane = new JScrollPane(outputArea);
+        frame.add(scrollPane, BorderLayout.CENTER);
+
 
 
         frame.setVisible(true);
     }
-
-
-
 
 
 }
