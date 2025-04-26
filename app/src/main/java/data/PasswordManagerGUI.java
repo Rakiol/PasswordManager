@@ -17,7 +17,17 @@ public class PasswordManagerGUI {
 
     public static void main(String[] args){
 
-
+        String masterpassword = JOptionPane.showInputDialog("Enter Master Password to unlock:");
+        if (masterpassword == null || masterpassword.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No master password entered. Exiting...");
+            System.exit(0);
+        }
+        try {
+            pm.loadFromFile(masterpassword);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error loading passwords: " + ex.getMessage());
+            System.exit(0);
+        }
 
         JFrame frame = new JFrame();
         frame.setTitle("Password Manager");
