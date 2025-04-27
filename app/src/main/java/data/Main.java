@@ -48,8 +48,11 @@ public class Main {
                     pm.addPassword(website,username,password);
                     break;
                 case 2:
-                    System.out.println("Not Implemented");
-                    //showPassword();
+                    pm.showAllPasswords();
+                    scanner.nextLine();
+                    System.out.print("Choose Password index to Show:");
+                    int indexSingle = scanner.nextInt();
+                    System.out.println(pm.getEntrys().get(indexSingle));
                     break;
                 case 3:
                     pm.showAllPasswords();
